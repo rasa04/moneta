@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Moneta — политика конфиденциальности</title>
+    <style>
+      :root {
+        color-scheme: light dark;
+        --ink: #14201c;
+        --muted: #5d6b66;
+        --line: #dfe5e2;
+        --bg: #f7f9f8;
+        --surface: #fff;
+        --accent: #12805c;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --ink: #e8efec;
+          --muted: #97a5a0;
+          --line: #26302c;
+          --bg: #101512;
+          --surface: #161d1a;
+          --accent: #3ddc97;
+        }
+      }
+
+      body {
+        margin: 0;
+        padding: 48px 20px 80px;
+        background: var(--bg);
+        color: var(--ink);
+        font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          sans-serif;
+      }
+
+      main {
+        max-width: 720px;
+        margin: 0 auto;
+      }
+
+      h1 {
+        margin: 0 0 4px;
+        font-size: 1.8rem;
+      }
+
+      h2 {
+        margin: 40px 0 12px;
+        font-size: 1.15rem;
+      }
+
+      .updated {
+        margin: 0 0 32px;
+        color: var(--muted);
+        font-size: 0.85rem;
+      }
+
+      section {
+        padding: 24px 26px;
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        background: var(--surface);
+      }
+
+      section + section {
+        margin-top: 24px;
+      }
+
+      ul {
+        padding-left: 20px;
+      }
+
+      li + li {
+        margin-top: 6px;
+      }
+
+      strong {
+        color: var(--accent);
+      }
+
+      a {
+        color: var(--accent);
+      }
+
+      .lang-note {
+        margin-top: 48px;
+        padding-top: 24px;
+        border-top: 1px solid var(--line);
+        color: var(--muted);
+        font-size: 0.85rem;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Политика конфиденциальности Moneta</h1>
+      <p class="updated">Обновлено 31 августа 2026 года</p>
+
+      <section>
+        <h2>Коротко</h2>
+        <p>
+          Moneta — приложение личного учёта финансов, которое работает без
+          сервера. <strong>Разработчик не получает ваши данные.</strong> Журнал
+          операций, счета и категории лежат в хранилище вашего устройства
+          (IndexedDB) и никуда не отправляются, пока вы сами не попросите об
+          этом.
+        </p>
+      </section>
+
+      <section>
+        <h2>Что хранится на устройстве</h2>
+        <ul>
+          <li>Счета, операции, категории, правила регулярных платежей.</li>
+          <li>Настройки: язык, валюта, тема, порядок разделов.</li>
+          <li>
+            PIN-код блокировки — в виде необратимого хеша; сам код не хранится
+            и восстановлению не подлежит.
+          </li>
+          <li>
+            Тексты разобранных банковских сообщений — до подтверждения или
+            отклонения предложенной операции. После решения текст стирается.
+          </li>
+        </ul>
+        <p>
+          Всё это удаляется вместе с приложением или очисткой его данных в
+          настройках системы.
+        </p>
+      </section>
+
+      <section>
+        <h2>Банковские сообщения</h2>
+        <p>
+          Функция выключена по умолчанию и включается вами вручную. Когда она
+          включена, приложение читает уведомления банковских приложений,
+          <strong>разбирает их прямо на устройстве</strong> и предлагает готовую
+          операцию для подтверждения. Уведомления приложения-СМС при этом
+          пропускаются: содержимое ваших сообщений приложение не читает.
+        </p>
+        <ul>
+          <li>Тексты сообщений не покидают устройство ни в каком виде.</li>
+          <li>
+            Разбор выполняется локально: правилами и моделью, встроенной в
+            приложение. Обращений к сети при этом не происходит.
+          </li>
+          <li>
+            Операция попадает в журнал только после вашего нажатия. Приложение
+            не записывает ничего само.
+          </li>
+          <li>
+            Приложение запоминает, какой счёт и категорию вы выбираете для
+            каждого отправителя, чтобы подставлять их в следующий раз. Эта
+            память хранится на устройстве и очищается в настройках раздела
+            «Сообщения банков».
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Google Drive</h2>
+        <p>
+          Вход в Google-аккаунт необязателен. Если вы входите, приложение
+          создаёт резервную копию в <strong>вашем собственном</strong> Google
+          Drive.
+        </p>
+        <ul>
+          <li>
+            Запрашивается единственная область доступа
+            <code>drive.file</code>: она даёт приложению доступ только к тем
+            файлам, которые оно создало само. Остальные ваши файлы на Drive
+            приложению не видны.
+          </li>
+          <li>
+            Копия уходит в ваш аккаунт, а не разработчику. Разработчик не имеет
+            к ней доступа.
+          </li>
+          <li>
+            Отозвать доступ можно в любой момент в настройках Google-аккаунта;
+            приложение продолжит работать локально.
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Обращения к сети</h2>
+        <p>Приложение выходит в сеть в трёх случаях, и только в них:</p>
+        <ul>
+          <li>
+            <strong>Курсы валют.</strong> Открытый API Центрального банка
+            Узбекистана (<a href="https://cbu.uz">cbu.uz</a>). Запрос анонимный,
+            в нём нет ваших данных.
+          </li>
+          <li>
+            <strong>Google Drive.</strong> Только после вашего входа в аккаунт и
+            только для резервных копий.
+          </li>
+          <li>
+            <strong>Трансляция в локальную сеть.</strong> Выключена по
+            умолчанию. Когда вы включаете её сами, приложение раздаёт журнал
+            только в пределах вашей Wi-Fi-сети, чтобы посмотреть его с другого
+            устройства.
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Чего в приложении нет</h2>
+        <ul>
+          <li>Аналитики и счётчиков посещаемости.</li>
+          <li>Рекламы и рекламных идентификаторов.</li>
+          <li>Сторонних SDK для отслеживания поведения.</li>
+          <li>Передачи данных третьим лицам — её нет, потому что нет сервера.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Разрешения</h2>
+        <ul>
+          <li>
+            <strong>Интернет и состояние сети</strong> — курсы валют, резервные
+            копии, трансляция в локальную сеть.
+          </li>
+          <li>
+            <strong>Биометрия</strong> — вход в приложение отпечатком или лицом
+            вместо PIN-кода. Биометрические данные приложению не передаются:
+            проверку выполняет система.
+          </li>
+          <li>
+            <strong>Доступ к уведомлениям</strong> — разбор сообщений банков,
+            которые присылают push. Выдаётся вами в системных настройках и
+            отзывается там же. Отказ оставляет приложение полностью
+            работоспособным: операции заводятся вручную.
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Дети</h2>
+        <p>
+          Приложение не предназначено для детей младше 13 лет и не собирает
+          данные о них — как, впрочем, и о ком-либо ещё.
+        </p>
+      </section>
+
+      <section>
+        <h2>Изменения политики</h2>
+        <p>
+          Если политика изменится, новая редакция появится на этой странице с
+          новой датой обновления вверху.
+        </p>
+      </section>
+
+      <section>
+        <h2>Связь</h2>
+        <p>
+          Вопросы о приложении и об этой политике — на электронную почту,
+          указанную в карточке приложения в магазине.
+        </p>
+      </section>
+
+      <p class="lang-note">
+        English version follows / Английская версия ниже.
+      </p>
+
+      <section lang="en">
+        <h2>Privacy Policy (English)</h2>
+        <p>
+          Moneta is a personal finance app that runs without a server.
+          <strong>The developer receives none of your data.</strong> Your
+          transactions, accounts and categories live in your device's storage
+          and never leave it unless you ask.
+        </p>
+        <ul>
+          <li>
+            <strong>Bank messages.</strong> Off by default. When enabled, bank
+            app notifications are parsed entirely on the device; the text never
+            leaves it, and an operation reaches your ledger only after you tap
+            Record. Notifications from the messaging app are skipped — the app
+            does not read your SMS.
+          </li>
+          <li>
+            <strong>Google Drive.</strong> Optional. Backups go to
+            <em>your own</em> Drive using the <code>drive.file</code> scope,
+            which grants access only to files the app itself created.
+          </li>
+          <li>
+            <strong>Network.</strong> Three cases only: anonymous exchange-rate
+            requests to the Central Bank of Uzbekistan
+            (<a href="https://cbu.uz">cbu.uz</a>), your own Google Drive
+            backups, and local Wi-Fi broadcast that you switch on yourself.
+          </li>
+          <li>
+            <strong>No analytics, no ads, no tracking SDKs, no data sharing.</strong>
+          </li>
+          <li>
+            <strong>Permissions.</strong> Internet and network state, biometrics
+            (verified by the system, never exposed to the app), and notification
+            access — the last one is granted in system settings when you enable
+            bank message parsing and can be declined without losing anything
+            else.
+          </li>
+        </ul>
+        <p>
+          The app is not directed at children under 13 and collects no data
+          about anyone. Questions go to the support email listed on the app's
+          store page.
+        </p>
+      </section>
+    </main>
+  </body>
+</html>

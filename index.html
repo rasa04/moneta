@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Moneta</title>
+    <style>
+      :root {
+        color-scheme: light dark;
+        --ink: #14201c;
+        --muted: #5d6b66;
+        --line: #dfe5e2;
+        --bg: #f7f9f8;
+        --surface: #fff;
+        --accent: #12805c;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --ink: #e8efec;
+          --muted: #97a5a0;
+          --line: #26302c;
+          --bg: #101512;
+          --surface: #161d1a;
+          --accent: #3ddc97;
+        }
+      }
+
+      body {
+        margin: 0;
+        padding: 48px 20px 80px;
+        background: var(--bg);
+        color: var(--ink);
+        font:
+          16px/1.6 -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          Roboto,
+          sans-serif;
+      }
+
+      main {
+        max-width: 720px;
+        margin: 0 auto;
+      }
+
+      h1 {
+        margin: 0 0 4px;
+        font-size: 1.8rem;
+      }
+
+      .tagline {
+        margin: 0 0 32px;
+        color: var(--muted);
+        font-size: 0.85rem;
+      }
+
+      section {
+        padding: 24px 26px;
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        background: var(--surface);
+      }
+
+      section + section {
+        margin-top: 24px;
+      }
+
+      p {
+        margin: 0;
+      }
+
+      p + p {
+        margin-top: 12px;
+      }
+
+      a {
+        color: var(--accent);
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Moneta</h1>
+      <p class="tagline">Учёт личных финансов, который работает без сервера</p>
+
+      <section>
+        <p>
+          <a href="privacy-policy.html">Политика конфиденциальности</a>
+        </p>
+        <p lang="en"><a href="privacy-policy.html">Privacy Policy</a></p>
+      </section>
+    </main>
+  </body>
+</html>
